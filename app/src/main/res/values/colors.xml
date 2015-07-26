@@ -11,4 +11,6 @@
     <color name="navigationBarColor">#000000</color>
     <color name="tabsScrollColor">#8a140e</color>
 
+    <color name="photo_tint">#88101010</color>
+
 </resources>

@@ -2,17 +2,22 @@ package com.theguyz.studio5.socialqa;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.theguyz.studio5.socialqa.models.QuestionsModel;
+
 
 public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private View shadowView;
+    FloatingActionButton fab;
+    HomeActivityFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +31,23 @@ public class HomeActivity extends AppCompatActivity {
             shadowView.setVisibility(View.GONE);
             toolbar.setElevation(4);
         }
+        fab = (FloatingActionButton)findViewById(R.id.fabBtn);
+        fragment = (HomeActivityFragment)getSupportFragmentManager().findFragmentById(R.id.home_fragment);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment.mResultList.add(new QuestionsModel());
+                fragment.questionsAdapter.notifyItemInserted(fragment.mResultList.size());
+            }
+        });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
