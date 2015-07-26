@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 import com.theguyz.studio5.socialqa.adapters.QuestionsAdapter;
 import com.theguyz.studio5.socialqa.models.QuestionsModel;
 
@@ -41,6 +42,35 @@ public class HomeActivityFragment extends Fragment {
         mResultList = new ArrayList<QuestionsModel>();
         questionsAdapter = new QuestionsAdapter(mResultList);
         recyclerView.setAdapter(questionsAdapter);
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(recyclerView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipe(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    mResultList.remove(position);
+                                    questionsAdapter.notifyItemRemoved(position);
+                                }
+                                questionsAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    mResultList.remove(position);
+                                    questionsAdapter.notifyItemRemoved(position);
+                                }
+                                questionsAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+        recyclerView.addOnItemTouchListener(swipeTouchListener);
 
         return v;
     }
