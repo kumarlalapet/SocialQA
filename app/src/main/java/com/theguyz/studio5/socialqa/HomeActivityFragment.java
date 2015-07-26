@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 import com.theguyz.studio5.socialqa.adapters.QuestionsAdapter;
 import com.theguyz.studio5.socialqa.models.QuestionsModel;
+import com.theguyz.studio5.socialqa.util.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +43,13 @@ public class HomeActivityFragment extends Fragment {
         questionsAdapter = new QuestionsAdapter(mResultList);
         recyclerView.setAdapter(questionsAdapter);
 
+
         SwipeableRecyclerViewTouchListener swipeTouchListener =
                 new SwipeableRecyclerViewTouchListener(recyclerView,
                         new SwipeableRecyclerViewTouchListener.SwipeListener() {
                             @Override
                             public boolean canSwipe(int position) {
+                                //TODO return flase based on the question type
                                 return true;
                             }
 
@@ -68,6 +70,17 @@ public class HomeActivityFragment extends Fragment {
                                 }
                                 questionsAdapter.notifyDataSetChanged();
                             }
+
+                            @Override
+                            public void onSwipingEvent(float deltaX, int swipingSlop) {
+
+                            }
+
+                            @Override
+                            public void onSwipeCancelled() {
+
+                            }
+
                         });
 
         recyclerView.addOnItemTouchListener(swipeTouchListener);

@@ -13,4 +13,6 @@
 
     <color name="photo_tint">#88101010</color>
 
+    <color name="buttonGreyMinColor">#FAFAFA</color>
+    <color name="buttonGreyMaxColor">#E0E0E0</color>
 </resources>

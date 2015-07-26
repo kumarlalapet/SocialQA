@@ -37,7 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment.mResultList.add(new QuestionsModel());
+                //TODO set the question type appropriately
+                fragment.mResultList.add(new QuestionsModel(QuestionsModel.QuestionType.TWOIMAGEQUESTION));
                 fragment.questionsAdapter.notifyItemInserted(fragment.mResultList.size());
             }
         });

@@ -8,7 +8,14 @@ import android.os.Parcelable;
  */
 public class QuestionsModel implements Parcelable {
 
-    public QuestionsModel() {
+    private QuestionType mQuestionType;
+
+    public QuestionsModel(QuestionType pQuestionType) {
+        this.mQuestionType = pQuestionType;
+    }
+
+    public QuestionType getmQuestionType() {
+        return mQuestionType;
     }
 
     @Override
@@ -18,14 +25,28 @@ public class QuestionsModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mQuestionType.name());
+    }
 
+    public enum QuestionType {
+        TWOIMAGEQUESTION, ONEIMAGEQUESTION, TWOCHOICENOIMAGEQUESTION,MORETHANTWOCHOICENOIMAGEQUESTION
     }
 
     public static final Creator<QuestionsModel> CREATOR = new Creator<QuestionsModel>() {
 
         @Override
         public QuestionsModel createFromParcel(Parcel source) {
-            return new QuestionsModel();
+            String enumName = source.readString();
+            QuestionType qt;
+            if(QuestionType.TWOIMAGEQUESTION.name().equals(enumName))
+                qt = QuestionType.TWOIMAGEQUESTION;
+            else if(QuestionType.ONEIMAGEQUESTION.name().equals(enumName))
+                qt = QuestionType.ONEIMAGEQUESTION;
+            else if(QuestionType.TWOCHOICENOIMAGEQUESTION.name().equals(enumName))
+                qt = QuestionType.TWOCHOICENOIMAGEQUESTION;
+            else
+                qt = QuestionType.MORETHANTWOCHOICENOIMAGEQUESTION;
+            return new QuestionsModel(qt);
         }
 
         @Override

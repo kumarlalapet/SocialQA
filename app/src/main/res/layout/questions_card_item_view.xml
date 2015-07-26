@@ -74,12 +74,13 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/imageone_view"
+                    android:id="@+id/imageleft_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/sample_image_beer" />
 
                 <Button
+                    android:id="@+id/buttonleft_view"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentBottom="true"
@@ -95,13 +96,14 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/imagetwo_view"
+                    android:id="@+id/imageright_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/sample_image_scotch_whisky" />
 
                 <Button
+                    android:id="@+id/buttonright_view"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentBottom="true"
