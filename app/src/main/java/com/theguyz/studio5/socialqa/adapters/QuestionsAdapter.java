@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = QuestionsAdapter.class.getName();
     private List<QuestionsModel> dataSet;
 
     public QuestionsAdapter (List<QuestionsModel> dataSet) {
@@ -35,7 +36,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Log.i("ss","ss");
+        Log.i(TAG,"Nothing yet");
     }
 
     @Override
